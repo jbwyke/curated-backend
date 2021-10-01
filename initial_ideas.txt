@@ -1,0 +1,53 @@
+trading card collector:
+-keep collection
+-list wants
+-pictures
+-conditions
+*other ideas
+-could we have a game
+
+geo based travel:
+-social media-esque
+-posts for content
+-photo based
+-research costs
+*other ideas
+-add caching?
+-add feeds?
+
+crypto:
+-research as we go
+-info about different ideas
+*
+-could it be educational?
+
+
+more thoughts
+===========================================================
+
+stock game:
+-not real money
+-competitive
+
+game scoreboard
+
+geo cache game
+
+video game item tracker
+
+video game:
+-blended skill
+-trivia
+
+
+API's to consume
+news feed
+
+travel 
+
+
+stock app
+
+plaid
+
+finance app => powerful choice
