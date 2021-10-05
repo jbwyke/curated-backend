@@ -41,8 +41,9 @@ public class User {
 	@JsonView({ JsonViewProfiles.User.class, JsonViewProfiles.Address.class })
 	private int id;
 
-	@Length(min = 1) // hibernate specific
+	@Length(min = 2) // hibernate specific
 	private String firstName;
+	@Length(min = 2) // hibernate specific
 	private String lastName;
 
 	@Length(min = 5)
@@ -53,16 +54,13 @@ public class User {
 
 	@NotEmpty
 	private String password;
-
-	@Email // checks for @ and .com
-	private String email;
 	
-    @ManyToMany
-	@JoinTable(name = "users_address",
-    joinColumns = @JoinColumn(name= "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "address_id"))
-    @JsonView(JsonViewProfiles.User.class)
-	private Set<Address> addresses;
+//    @ManyToMany
+//	@JoinTable(name = "users_address",
+//    joinColumns = @JoinColumn(name= "user_id"),
+//    inverseJoinColumns = @JoinColumn(name = "address_id"))
+//    @JsonView(JsonViewProfiles.User.class)
+//	private Set<Address> addresses;
     
     
 
@@ -74,6 +72,5 @@ public class User {
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.email = email;
 	}
 }
