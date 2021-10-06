@@ -18,8 +18,6 @@ public class UserService {
 	@Autowired
 	private UserDAO userDAO;
 	
-//	@Autowired
-//	private AddressDAO addressDAO;
 	
 	public Set<User> findAll() {
 		return userDAO.findAll()

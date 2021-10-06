@@ -8,6 +8,7 @@ public class Team2BackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Team2BackendApplication.class, args);
+		
 	}
 
 }
