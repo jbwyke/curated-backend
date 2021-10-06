@@ -27,9 +27,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
-@Table(name = "users") // schema = "springdata"
+@Table(name = "user") // schema = "springdata"
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +38,7 @@ public class User {
 	@Id
 	@Column(name = "user_id", nullable = false, unique = true, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView({ JsonViewProfiles.User.class, JsonViewProfiles.Address.class })
+//	@JsonView({ JsonViewProfiles.User.class, JsonViewProfiles.Address.class })
 	private int id;
 
 	@Length(min = 2) // hibernate specific
@@ -66,7 +66,7 @@ public class User {
 
 	public User(@Length(min = 1) String firstName, String lastName,
 			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
-			@NotEmpty String password, @Email String email) {
+			@NotEmpty String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
