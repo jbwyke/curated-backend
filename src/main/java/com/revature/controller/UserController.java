@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.User;
@@ -30,13 +31,14 @@ public class UserController {
 	
 	// find all
 	@GetMapping
-	public ResponseEntity<Set<User>> findAll() {
+	public ResponseEntity<Set<User>> findAll(@RequestParam(required = false, value="username") String username) {
 		return ResponseEntity.ok(userService.findAll());
 	}
 	
+	
 //	 find by username /{username} use @pathvariable as your parameter
-	@GetMapping("username/{username}")
-	public ResponseEntity<User> findByUsername(@PathVariable("username") String username) {
+	@GetMapping("/")
+	public ResponseEntity<User> findByUsername(@RequestParam(value="username") String username) {
 		return ResponseEntity.ok(userService.findByUsername(username));
 	}
 	
