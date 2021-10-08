@@ -22,7 +22,7 @@ public class MovieService {
 				.collect(Collectors.toSet());
 	}
 	
-	public Movie findById(int id) {
+	public Movie findById(String id) {
 		
 		return movieDAO.findById(id)
 				.orElseThrow(() -> new MovieNotFoundException("No movie found with id " + id));

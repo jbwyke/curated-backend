@@ -9,4 +9,6 @@ import com.revature.model.Movie;
 public interface MovieDAO extends JpaRepository<Movie, Integer>{
 
 	public Optional<Movie> findByTitle(String title);
+
+	public Optional<Movie> findById(String id);
 }
