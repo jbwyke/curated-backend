@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -20,6 +22,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -61,16 +64,18 @@ public class User {
 //    inverseJoinColumns = @JoinColumn(name = "address_id"))
 //    @JsonView(JsonViewProfiles.User.class)
 //	private Set<Address> addresses;
-    
-    
+	
+	@JsonManagedReference // prevents infinite loop
+	@OneToMany(targetEntity=Review.class, mappedBy="user")
+ 	private List<Review> reviews;
 
-	public User(@Length(min = 1) String firstName, String lastName,
-			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
-			@NotEmpty String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-	}
+//	public User(@Length(min = 1) String firstName, String lastName,
+//			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
+//			@NotEmpty String password) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.username = username;
+//		this.password = password;
+//	}
 }
