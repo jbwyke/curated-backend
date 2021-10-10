@@ -39,7 +39,7 @@ public class MovieController {
 	}
 	
     @GetMapping("/search")
-	public ResponseEntity<Set<Movie>> findByTitleContaining(@RequestParam(value="t") String title) {
+	public ResponseEntity<Set<Movie>> findByTitleContaining(@RequestParam(value="q") String title) {
 		return ResponseEntity.ok(movieService.findByTitleContaining(title));
 	}
 	
