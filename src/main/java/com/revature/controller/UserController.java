@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.model.LoginForm;
 import com.revature.model.User;
 import com.revature.service.UserService;
 
@@ -31,7 +32,7 @@ public class UserController {
 	
 	// find all
 	@GetMapping
-	public ResponseEntity<Set<User>> findAll(@RequestParam(required = false, value="username") String username) {
+	public ResponseEntity<Set<User>> findAll() {
 		return ResponseEntity.ok(userService.findAll());
 	}
 	
@@ -46,6 +47,11 @@ public class UserController {
     public User getUser(@PathVariable int id) {
         return userService.findById(id);
     }
+    
+    @GetMapping("/search/{username}")
+	public ResponseEntity<Set<User>> findByUsernameContaining(@PathVariable String username) {
+		return ResponseEntity.ok(userService.findByUsernameContaining(username));
+	}
 	
 	// insert
 	@PostMapping("/add")
@@ -54,4 +60,22 @@ public class UserController {
 		return ResponseEntity.ok(userService.insert(u));
 		
 	} 
+	
+	@PostMapping("/login") 
+	public ResponseEntity<User> login(@RequestBody LoginForm lf) {
+		
+		ResponseEntity<User> entity;
+		try {
+			entity = findByUsername(lf.getUsername());
+			User user = entity.getBody();
+
+			if (!user.getPassword().equals(lf.getPassword())) {
+				throw new Exception();
+			}
+			return entity;
+		} catch (Exception e) {
+			System.out.println("The username or password provided is incorrect");
+			return null;
+		}
+	}
 }

@@ -58,6 +58,9 @@ public class User {
 	@NotEmpty
 	private String password;
 	
+	@NotEmpty
+	private String email;
+	
 //    @ManyToMany
 //	@JoinTable(name = "users_address",
 //    joinColumns = @JoinColumn(name= "user_id"),
