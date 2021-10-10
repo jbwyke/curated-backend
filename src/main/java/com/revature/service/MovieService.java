@@ -28,6 +28,12 @@ public class MovieService {
 				.orElseThrow(() -> new MovieNotFoundException("No movie found with id " + id));
 	}
 	
+	public Set<Movie> findByTitleContaining(String title) {
+		return movieDAO.findByTitleContaining(title)
+				.stream()
+				.collect(Collectors.toSet());
+	}
+	
 	public Movie insert(Movie m) {
 		return movieDAO.save(m);
 	}
