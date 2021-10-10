@@ -48,8 +48,8 @@ public class UserController {
         return userService.findById(id);
     }
     
-    @GetMapping("/search/{username}")
-	public ResponseEntity<Set<User>> findByUsernameContaining(@PathVariable String username) {
+    @GetMapping("/search")
+	public ResponseEntity<Set<User>> findByUsernameContaining(@RequestParam(value="u") String username) {
 		return ResponseEntity.ok(userService.findByUsernameContaining(username));
 	}
 	
