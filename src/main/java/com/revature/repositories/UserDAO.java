@@ -22,6 +22,9 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 	// Since we are inheriting all methods from JPARepository, we already have save(), get()...etc...
 	public Optional<User> findByUsername(String username);
 	// eventually venture into Optional.ofNullable
+	
+	public List<User> findByUsernameContaining(String username);
+	
 
 	@Transactional // This means I want this particualr method to be part of a transaction
 	// @Modifying  // I would use this if I intend for some method to manipulate and modify data in a DB

@@ -30,6 +30,13 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException("No user found with username " + username));
 	}
 	
+	public Set<User> findByUsernameContaining(String username) {
+		return userDAO.findByUsernameContaining(username)
+				.stream()
+				.collect(Collectors.toSet());
+	}
+
+	
 	public User findById(int id) {
 		
 		return userDAO.findById(id)
@@ -44,6 +51,7 @@ public class UserService {
 		
 		return userDAO.save(u);
 	}
+
 
 	public User getById(int id) {
 		return userDAO.getById(id);
