@@ -25,25 +25,13 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 //	@Autowired
 //	private JwtRequestFilter jwtRequestFilter;
 	
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userService);
-//		auth.authenticationProvider(authProvider());
-//	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	}
-	
-//	@Bean
-//	public DaoAuthenticationProvider authProvider() {
-//		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//		authProvider.setUserDetailsService(userService);
-//		authProvider.setPasswordEncoder(passwordEncoder());
-//		return authProvider;
-//	}
+
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
