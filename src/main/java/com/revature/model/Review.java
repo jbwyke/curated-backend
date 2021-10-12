@@ -48,12 +48,12 @@ public class Review {
 	@Length(min = 0, max = 1500)
 	private String review;
 	
-	@JsonBackReference // prevents infinite loop
+	@JsonBackReference(value="movie") // prevents infinite loop
 	@ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "movie_id", nullable = false)
 	private Movie movie;
 	 
-	@JsonBackReference
+	@JsonBackReference(value="user")
 	@ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;

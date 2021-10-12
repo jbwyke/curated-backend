@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired 
+	PasswordEncoder passwordEncoder;
 	
 	// find all
 	@GetMapping
@@ -68,8 +72,7 @@ public class UserController {
 		try {
 			entity = findByUsername(lf.getUsername());
 			User user = entity.getBody();
-
-			if (!user.getPassword().equals(lf.getPassword())) {
+			if (!passwordEncoder.matches(lf.getPassword(), user.getPassword())) {
 				throw new Exception();
 			}
 			return entity;

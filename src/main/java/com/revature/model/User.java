@@ -68,7 +68,7 @@ public class User {
 //    @JsonView(JsonViewProfiles.User.class)
 //	private Set<Address> addresses;
 	
-	@JsonManagedReference // prevents infinite loop
+	@JsonManagedReference(value="user") // prevents infinite loop
 	@OneToMany(targetEntity=Review.class, mappedBy="user")
  	private List<Review> reviews;
 
