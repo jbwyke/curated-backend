@@ -45,7 +45,7 @@ public class Movie {
 	private String plot;
 	private String poster;
 	
-	@JsonManagedReference // prevents infinite loop
+	@JsonManagedReference(value="movie") // prevents infinite loop
 	@OneToMany(targetEntity=Review.class, mappedBy="movie")
  	private List<Review> reviews;
 
