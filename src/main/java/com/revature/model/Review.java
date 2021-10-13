@@ -30,15 +30,6 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true, updatable = false)
 	private int reviewId;
-	
-//	@ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "user_id", nullable = false)
-//	private int userId;
-//
-//	@ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "movie_id", nullable = false)
-//	private String movieId;
-	
 
 	@Range(min = 1, max = 5)
 	private int rating;
@@ -58,16 +49,5 @@ public class Review {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-
-//	public Review(int userId, String movieId, @Range(min = 1, max = 5) int rating, boolean recommended,
-//			@Length(min = 0, max = 1500) String review) {
-//		super();
-//		this.userId = userId;
-//		this.movieId = movieId;
-//		this.rating = rating;
-//		this.recommended = recommended;
-//		this.review = review;
-//	}
-	
 	
 }
