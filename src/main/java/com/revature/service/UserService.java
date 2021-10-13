@@ -1,5 +1,7 @@
 package com.revature.service;
 
+
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -68,9 +70,12 @@ public class UserService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return (UserDetails) userDAO.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("No user found with username " + username));
+		User u = this.findByUsername(username);
+		if(u == null) {
+			throw new UsernameNotFoundException("User not found with username: " + username);
+		}
+		return new org.springframework.security.core.userdetails.User(u.getUsername(), u.getPassword(),
+				new ArrayList<>());
 	}
-	
 
 }
