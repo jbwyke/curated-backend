@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,20 +26,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@IdClass(User.class)
 public class Follow {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true, updatable = false)
 	private int followId;
-	
-	@Id
+
+	@JsonBackReference(value="follow_user")
 	@ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "follower_id", nullable = false)
 	private User follower;
 	
-	@Id
+	@JsonBackReference(value="following_user")
 	@ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "following_id", nullable = false)
 	private User following;

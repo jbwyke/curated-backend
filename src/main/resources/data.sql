@@ -1,9 +1,9 @@
-INSERT INTO user (first_name, last_name, username, password)
+INSERT INTO user (first_name, last_name, username, password, email)
   VALUES 
-    ('Ty', 'Johnson', 'tjohnson', 'password'),
-    ('Kirk', 'Hahn', 'khahn', 'password'),
-    ('Rashid', 'Taleb', 'rtaleb', 'somepass'),
-    ('Jacen', 'Wyke', 'jwyke', 'somepass');
+    ('Ty', 'Johnson', 'tjohnson', 'password', 'tj@email.com'),
+    ('Kirk', 'Hahn', 'khahn', 'password', 'kh@email.com'),
+    ('Rashid', 'Taleb', 'rtaleb', 'somepass', 'rt@email.com'),
+    ('Jacen', 'Wyke', 'jwyke', 'somepass', 'jw@email.com');
 
 INSERT INTO movie (id, director, plot, poster, rated, released, title, year)
   VALUES
@@ -36,3 +36,15 @@ INSERT INTO review (user_id, movie_id, rating, recommended, review)
     (2, 'tt4154796', 2, false, 'Eh. Not my style'),
     (3, 'tt0083658', 5, true, 'OMG MY FAVORITE MOVIE'),
     (4, 'tt0083658', 1, true, 'This was the worst movie I have ever seen. Def a must watch!');
+
+INSERT INTO follow (follower_id, following_id, follow_date)
+  VALUES
+    (1, 2, current_timestamp),
+    (1, 3, current_timestamp),
+    (1, 4, current_timestamp),
+    (2, 1, current_timestamp),
+    (2, 3, current_timestamp),
+    (3, 4, current_timestamp),
+    (3, 2, current_timestamp),
+    (4, 1, current_timestamp),
+    (4, 2, current_timestamp);
