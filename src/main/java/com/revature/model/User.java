@@ -51,6 +51,7 @@ public class User {
 
 	@Length(min = 5)
 	@NotBlank // this comes From java EE from javax.val...
+	@Column(unique=true)
 	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed,
 												// no spaces allowed
 	private String username;
@@ -59,34 +60,21 @@ public class User {
 	private String password;
 	
 	@NotEmpty
+	@Column(unique=true)
 	private String email;
 	
-//    @ManyToMany
-//	@JoinTable(name = "users_address",
-//    joinColumns = @JoinColumn(name= "user_id"),
-//    inverseJoinColumns = @JoinColumn(name = "address_id"))
-//    @JsonView(JsonViewProfiles.User.class)
-//	private Set<Address> addresses;
 	
 	@JsonManagedReference(value="user") // prevents infinite loop
 	@OneToMany(targetEntity=Review.class, mappedBy="user")
  	private List<Review> reviews;
 	
-	@JsonManagedReference(value="user") // prevents infinite loop
-	@OneToMany(targetEntity=Follow.class, mappedBy="follow")
+	@JsonManagedReference(value="follow_user") // prevents infinite loop
+	@OneToMany(targetEntity=Follow.class, mappedBy="following")
  	private List<Follow> followers;
 	
-	@JsonManagedReference(value="user") // prevents infinite loop
-	@OneToMany(targetEntity=Follow.class, mappedBy="follow")
+	@JsonManagedReference(value="following_user") // prevents infinite loop
+	@OneToMany(targetEntity=Follow.class, mappedBy="follower")
  	private List<Follow> following;
 
-//	public User(@Length(min = 1) String firstName, String lastName,
-//			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
-//			@NotEmpty String password) {
-//		super();
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.username = username;
-//		this.password = password;
-//	}
+
 }
