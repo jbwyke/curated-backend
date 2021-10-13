@@ -32,6 +32,7 @@ INSERT INTO genre (name)
 INSERT INTO review (user_id, movie_id, rating, recommended, review)
   VALUES
     (1, 'tt4154796', 4, true, 'Was pretty cool'),
+    (1, 'tt0083658', 4, true, 'wow'),
     (2, 'tt4154796', 2, false, 'Eh. Not my style'),
     (3, 'tt0083658', 5, true, 'OMG MY FAVORITE MOVIE'),
     (4, 'tt0083658', 1, true, 'This was the worst movie I have ever seen. Def a must watch!');
