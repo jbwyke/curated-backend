@@ -1,9 +1,15 @@
 package com.revature.service;
 
+
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.UserNotFoundException;
@@ -13,11 +19,14 @@ import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService{
 	
 	@Autowired
 	private UserDAO userDAO;
 	
+	//class from spring security to encrypt passwords
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	public Set<User> findAll() {
 		return userDAO.findAll()
@@ -44,8 +53,10 @@ public class UserService {
 	}
 	
 	public User insert(User u) {
-		
-//		if (u.getAddresses() !=null) {
+		//encrypting the submitted password and sending the encrypted password to the db
+		String encodedPassword = this.passwordEncoder.encode(u.getPassword());
+		u.setPassword(encodedPassword);
+		//		if (u.getAddresses() !=null) {
 //			u.getAddresses().forEach(a -> addressDAO.save(a));
 //		}
 		
@@ -56,6 +67,15 @@ public class UserService {
 	public User getById(int id) {
 		return userDAO.getById(id);
 	}
-	
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User u = this.findByUsername(username);
+		if(u == null) {
+			throw new UsernameNotFoundException("User not found with username: " + username);
+		}
+		return new org.springframework.security.core.userdetails.User(u.getUsername(), u.getPassword(),
+				new ArrayList<>());
+	}
 
 }
