@@ -71,6 +71,14 @@ public class User {
 	@JsonManagedReference(value="user") // prevents infinite loop
 	@OneToMany(targetEntity=Review.class, mappedBy="user")
  	private List<Review> reviews;
+	
+	@JsonManagedReference(value="user") // prevents infinite loop
+	@OneToMany(targetEntity=Follow.class, mappedBy="follow")
+ 	private List<Follow> followers;
+	
+	@JsonManagedReference(value="user") // prevents infinite loop
+	@OneToMany(targetEntity=Follow.class, mappedBy="follow")
+ 	private List<Follow> following;
 
 //	public User(@Length(min = 1) String firstName, String lastName,
 //			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
