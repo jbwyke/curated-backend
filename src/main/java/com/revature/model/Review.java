@@ -3,10 +3,12 @@ package com.revature.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,15 +42,15 @@ public class Review {
 	@Length(min = 0, max = 1500)
 	private String review;
 	
-	@JsonBackReference(value="movie") // prevents infinite loop
-	@ManyToOne(targetEntity = Movie.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "movie_id", nullable = false)
+	@JoinColumn(nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnoreProperties(value="reviews", allowSetters=true)
 	private Movie movie;
-	 
-	@JsonBackReference(value="user")
-	@ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
-
 	
+
+	@JoinColumn(nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnoreProperties(value="reviews", allowSetters=true)
+	private User user;
+ 
 }
