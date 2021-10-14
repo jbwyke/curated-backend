@@ -25,8 +25,8 @@ INSERT INTO movie (id, director, plot, poster, rated, released, title, year)
     'Avengers: Endgame', 
     '2019');
 
-INSERT INTO genre (name)
-  VALUES ('Action'), ('Adventure'), ('Drama'), ('Sci-Fi'), ('Thriller');
+-- INSERT INTO genre (name)
+--   VALUES ('Action'), ('Adventure'), ('Drama'), ('Sci-Fi'), ('Thriller');
 
 
 INSERT INTO review (user_id, movie_id, rating, recommended, review)
@@ -37,14 +37,14 @@ INSERT INTO review (user_id, movie_id, rating, recommended, review)
     (3, 'tt0083658', 5, true, 'OMG MY FAVORITE MOVIE'),
     (4, 'tt0083658', 1, true, 'This was the worst movie I have ever seen. Def a must watch!');
 
-INSERT INTO follow (follower_id, following_id, follow_date)
-  VALUES
-    (1, 2, current_timestamp),
-    (1, 3, current_timestamp),
-    (1, 4, current_timestamp),
-    (2, 1, current_timestamp),
-    (2, 3, current_timestamp),
-    (3, 4, current_timestamp),
-    (3, 2, current_timestamp),
-    (4, 1, current_timestamp),
-    (4, 2, current_timestamp);
+-- INSERT INTO follow (follower_id, following_id, follow_date)
+--   VALUES
+--     (1, 2, current_timestamp),
+--     (1, 3, current_timestamp),
+--     (1, 4, current_timestamp),
+--     (2, 1, current_timestamp),
+--     (2, 3, current_timestamp),
+--     (3, 4, current_timestamp),
+--     (3, 2, current_timestamp),
+--     (4, 1, current_timestamp),
+--     (4, 2, current_timestamp);

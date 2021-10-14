@@ -3,8 +3,10 @@ package com.revature.model;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +24,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -30,7 +33,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 @Entity
 @Table(name = "user") // schema = "springdata"
 @Data
@@ -39,9 +42,8 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	@Id
-	@Column(name = "user_id", nullable = false, unique = true, updatable = false)
+	@Column(nullable = false, unique = true, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@JsonView({ JsonViewProfiles.User.class, JsonViewProfiles.Address.class })
 	private int id;
 
 	@Length(min = 2) // hibernate specific
@@ -64,10 +66,11 @@ public class User {
 	private String email;
 	
 	
-	@JsonManagedReference(value="user") // prevents infinite loop
-	@OneToMany(targetEntity=Review.class, mappedBy="user")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="user")
+	@JsonIgnoreProperties(value="user", allowSetters=true)
  	private List<Review> reviews;
 	
+	// FIX THE TWO  BELOW THIS
 	@JsonManagedReference(value="follow_user") // prevents infinite loop
 	@OneToMany(targetEntity=Follow.class, mappedBy="following")
  	private List<Follow> followers;
@@ -75,6 +78,17 @@ public class User {
 	@JsonManagedReference(value="following_user") // prevents infinite loop
 	@OneToMany(targetEntity=Follow.class, mappedBy="follower")
  	private List<Follow> following;
+
+	public User(@Length(min = 2) String firstName, @Length(min = 2) String lastName,
+			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
+			@NotEmpty String password, @NotEmpty String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
 
 
 }
