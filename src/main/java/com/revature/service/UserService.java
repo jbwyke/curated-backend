@@ -72,5 +72,16 @@ public class UserService implements UserDetailsService{
 				.orElseThrow(() -> new UserNotFoundException("No user found with username " + username));
 	}
 	
+	
+	/*
+	 * the following methods are here for testing purposes
+	 */
+	public void setUserDAO(UserDAO udao) {
+		this.userDAO = udao;
+	}
+	
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
 
 }
