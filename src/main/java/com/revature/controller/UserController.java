@@ -55,15 +55,7 @@ public class UserController {
     @GetMapping("/search")
 	public ResponseEntity<Set<User>> findByUsernameContaining(@RequestParam(value="u") String username) {
 		return ResponseEntity.ok(userService.findByUsernameContaining(username));
-	}
-	
-	// insert
-	@PostMapping("/add")
-	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
-
-		return ResponseEntity.ok(userService.insert(u));
-		
-	} 
+    }
 	
 	@PostMapping("/login") 
 	public ResponseEntity<User> login(@RequestBody LoginForm lf) {
