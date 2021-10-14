@@ -77,5 +77,16 @@ public class UserService implements UserDetailsService{
 		return new org.springframework.security.core.userdetails.User(u.getUsername(), u.getPassword(),
 				new ArrayList<>());
 	}
+	
+	/*
+	 * the following methods are here for testing purposes
+	 */
+	public void setUserDAO(UserDAO udao) {
+		this.userDAO = udao;
+	}
+	
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
 
 }
