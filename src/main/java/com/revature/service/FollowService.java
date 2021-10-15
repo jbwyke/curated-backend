@@ -35,4 +35,8 @@ public class FollowService {
 	public Follow addFollow(Follow follow) {
 		return followDao.save(follow);
 	}
+	
+	public void delete(int id) {
+		followDao.deleteById(id);
+	}
 }

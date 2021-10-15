@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.LoginForm;
+import com.revature.model.Review;
 import com.revature.model.User;
 import com.revature.service.UserService;
 
@@ -58,25 +60,31 @@ public class UserController {
 		return ResponseEntity.ok(userService.findByUsernameContaining(username));
     }
     
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<User> update(@Valid @RequestBody User user) {
+		return ResponseEntity.ok(userService.insert(user));
+	}
+    
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         userService.delete(id);
     }
 	
-	@PostMapping("/login") 
-	public ResponseEntity<User> login(@RequestBody LoginForm lf) {
-		
-		ResponseEntity<User> entity;
-		try {
-			entity = findByUsername(lf.getUsername());
-			User user = entity.getBody();
-			if (!passwordEncoder.matches(lf.getPassword(), user.getPassword())) {
-				throw new Exception();
-			}
-			return entity;
-		} catch (Exception e) {
-			System.out.println("The username or password provided is incorrect");
-			return null;
-		}
-	}
+//	@PostMapping("/login") 
+//	public ResponseEntity<User> login(@RequestBody LoginForm lf) {
+//		
+//		ResponseEntity<User> entity;
+//		try {
+//			entity = findByUsername(lf.getUsername());
+//			User user = entity.getBody();
+//			if (!passwordEncoder.matches(lf.getPassword(), user.getPassword())) {
+//				throw new Exception();
+//			}
+//			return entity;
+//		} catch (Exception e) {
+//			System.out.println("The username or password provided is incorrect");
+//			return null;
+//		}
+//	}
 }

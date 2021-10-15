@@ -5,7 +5,7 @@ INSERT INTO users (first_name, last_name, username, password, email)
     ('Rashid', 'Taleb', 'rtaleb', 'somepass', 'rt@email.com'),
     ('Jacen', 'Wyke', 'jwyke', 'somepass', 'jw@email.com');
 
-INSERT INTO movie (id, director, plot, poster, rated, released, title, year)
+INSERT INTO movie (id, director, plot, poster, rated, released, title, year, genre, metacritic, runtime, actors)
   VALUES
     ('tt0083658',
     'Ridley Scott', 
@@ -14,7 +14,11 @@ INSERT INTO movie (id, director, plot, poster, rated, released, title, year)
     'R', 
     '25 Jun 1982', 
     'Blade Runner', 
-    '1982'),
+    '1982',
+    'Action, Sci-Fi, Thriller',
+    '84',
+    '117 min',
+    'Harrison Ford, Rutger Hauer, Sean Young'),
 
     ('tt4154796',
     'Anthony Russo, Joe Russo', 
@@ -23,10 +27,24 @@ INSERT INTO movie (id, director, plot, poster, rated, released, title, year)
     'PG-13', 
     '26 Apr 2019', 
     'Avengers: Endgame', 
-    '2019');
+    '2019',
+    'Action, Adventure, Drama',
+    '78',
+    '181 min',
+    'Robert Downey Jr., Chris Evans, Mark Ruffalo');
 
 INSERT INTO genre (name)
   VALUES ('Action'), ('Adventure'), ('Drama'), ('Sci-Fi'), ('Thriller');
+
+INSERT INTO movie_genre (movie_id, genre_id)
+  VALUES 
+    ('tt0083658', 1),
+    ('tt0083658', 4),
+    ('tt0083658', 5),
+    ('tt4154796', 1),
+    ('tt4154796', 2),
+    ('tt4154796', 3);
+
 
 
 INSERT INTO review (user_id, movie_id, rating, recommended, review)

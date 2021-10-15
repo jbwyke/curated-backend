@@ -1,10 +1,17 @@
 package com.revature.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -32,4 +39,12 @@ public class Genre {
 	@NotEmpty
 	@Column(unique=true)
 	private String name;
+	
+//	@ManyToMany(cascade = {CascadeType.ALL})
+//	@JoinTable(
+//	        name = "movie_genre", 
+//	        joinColumns = { @JoinColumn(name = "movie_id") }, 
+//	        inverseJoinColumns = { @JoinColumn(name = "genre_id") }
+//	)
+//	Set<Movie> movies = new HashSet<>();
 }

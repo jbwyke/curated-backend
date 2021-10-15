@@ -29,7 +29,13 @@ public class MovieService {
 	}
 	
 	public Set<Movie> findByTitleContaining(String title) {
-		return movieDAO.findByTitleContaining(title)
+		return movieDAO.findByTitleContainingIgnoreCase(title)
+				.stream()
+				.collect(Collectors.toSet());
+	}
+	
+	public Set<Movie> findByGenreContaining(String title) {
+		return movieDAO.findByGenreContainingIgnoreCase(title)
 				.stream()
 				.collect(Collectors.toSet());
 	}

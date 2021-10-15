@@ -12,7 +12,9 @@ public interface MovieDAO extends JpaRepository<Movie, Integer>{
 
 	public Optional<Movie> findByTitle(String title);
 
-	public List<Movie> findByTitleContaining(String title);
+	public List<Movie> findByTitleContainingIgnoreCase(String title);
+	
+	public List<Movie> findByGenreContainingIgnoreCase(String genre);
 
 	public Optional<Movie> findById(String id);
 }
