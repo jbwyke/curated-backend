@@ -61,11 +61,11 @@ public class User {
  	private List<Review> reviews;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="follower")
-	@JsonIgnoreProperties(value={"users", "follower"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"users"}, allowSetters=true)
  	private List<Follow> following;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="following")
-	@JsonIgnoreProperties(value={"users", "following"}, allowSetters=true)
+	@JsonIgnoreProperties(value={"users"}, allowSetters=true)
  	private List<Follow> followers;
 	
 //	@JsonManagedReference(value="follow_user") // prevents infinite loop

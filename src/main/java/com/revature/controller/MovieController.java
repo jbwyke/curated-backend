@@ -42,6 +42,11 @@ public class MovieController {
 	public ResponseEntity<Set<Movie>> findByTitleContaining(@RequestParam(value="q") String title) {
 		return ResponseEntity.ok(movieService.findByTitleContaining(title));
 	}
+    
+    @GetMapping("/search/genre")
+	public ResponseEntity<Set<Movie>> findByGenreContaining(@RequestParam(value="q") String genre) {
+		return ResponseEntity.ok(movieService.findByGenreContaining(genre));
+	}
 	
 	@PostMapping("/add")
 	public ResponseEntity<Movie> insert(@Valid @RequestBody Movie m) {
