@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService{
 		return userDAO.save(u);
 	}
 
-
+	//do we need to throw an exception here?
 	public User getById(int id) {
 		return userDAO.getById(id);
 	}
