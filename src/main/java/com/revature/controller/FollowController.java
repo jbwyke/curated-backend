@@ -30,23 +30,23 @@ public class FollowController {
 		return ResponseEntity.ok(followService.findAll());
 	}
 	
-	@GetMapping("/{follower}")
-	public Set<Follow> getByFollower(@PathVariable int follower) {
-		return followService.findByFollower(follower);
-	}
-	
-	@GetMapping("/{following}")
-	public Set<Follow> getByFollowing(@PathVariable int following) {
-		return followService.findByFollowing(following);
-	}
-	
-	@GetMapping("/{follower}/{following}")
-	public Follow getByFollowerAndFollowing(@PathVariable int follower, @PathVariable int following) {
-		return followService.findById(follower, following);
-	}
+//	@GetMapping("/{follower}")
+//	public Set<Follow> getByFollower(@PathVariable int follower) {
+//		return followService.findByFollower(follower);
+//	}
+//	
+//	@GetMapping("/{following}")
+//	public Set<Follow> getByFollowing(@PathVariable int following) {
+//		return followService.findByFollowing(following);
+//	}
+//	
+//	@GetMapping("/{follower}/{following}")
+//	public Follow getByFollowerAndFollowing(@PathVariable int follower, @PathVariable int following) {
+//		return followService.findById(follower, following);
+//	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Follow> insert(@Valid @RequestBody Follow follow) {
+	public ResponseEntity<Follow> insert(@Valid @RequestBody Follow follow) { 
 		return ResponseEntity.ok(followService.addFollow(follow));
 	}
 }

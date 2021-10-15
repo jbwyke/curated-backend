@@ -20,17 +20,17 @@ public class FollowService {
 		return followDao.findAll().stream().collect(Collectors.toSet());
 	}
 	
-	public Follow findById(int follower, int following) {
-		return followDao.findByFollowerIdAndFollowingId(follower, following).orElseThrow(() -> new FollowNotFoundException("No follow found"));
-	}
-	
-	public Set<Follow> findByFollower(int follower) {
-		return followDao.findByFollowerId(follower).orElseThrow(() -> new FollowNotFoundException("No follow found from user: " + follower));
-	}
-	
-	public Set<Follow> findByFollowing(int following) {
-		return followDao.findByFollowingId(following).orElseThrow(() -> new FollowNotFoundException("No follow found to user: " + following));
-	}
+//	public Follow findById(int follower, int following) {
+//		return followDao.findByFollowerIdAndFollowingId(follower, following).orElseThrow(() -> new FollowNotFoundException("No follow found"));
+//	}
+//	
+//	public Set<Follow> findByFollower(int follower) {
+//		return followDao.findByFollowerId(follower).orElseThrow(() -> new FollowNotFoundException("No follow found from user: " + follower));
+//	}
+//	
+//	public Set<Follow> findByFollowing(int following) {
+//		return followDao.findByFollowingId(following).orElseThrow(() -> new FollowNotFoundException("No follow found to user: " + following));
+//	}
 	
 	public Follow addFollow(Follow follow) {
 		return followDao.save(follow);

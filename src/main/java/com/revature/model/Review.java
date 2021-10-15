@@ -50,7 +50,7 @@ public class Review {
 
 	@JoinColumn(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnoreProperties(value="reviews", allowSetters=true)
+	@JsonIgnoreProperties(value={"reviews", "followers", "following"}, allowSetters=true)
 	private User user;
  
 }
