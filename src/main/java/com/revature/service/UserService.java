@@ -67,6 +67,10 @@ public class UserService implements UserDetailsService{
 	public User getById(int id) {
 		return userDAO.getById(id);
 	}
+	
+	public void delete(int id) {
+		userDAO.deleteById(id);
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

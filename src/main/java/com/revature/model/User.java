@@ -56,7 +56,7 @@ public class User {
 	private String email;
 	
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="user")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true, mappedBy="user")
 	@JsonIgnoreProperties(value="users", allowSetters=true)
  	private List<Review> reviews;
 	

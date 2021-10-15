@@ -42,13 +42,13 @@ public class Review {
 	@Length(min = 0, max = 1500)
 	private String review;
 	
-	@JoinColumn(nullable = false)
+	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="reviews", allowSetters=true)
 	private Movie movie;
 	
 
-	@JoinColumn(nullable = false)
+	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value={"reviews", "followers", "following"}, allowSetters=true)
 	private User user;
