@@ -32,7 +32,9 @@ public class ReviewController {
 	
 	@GetMapping("/{id}")
 	public Review getReview(@PathVariable int id) {
-		return reviewService.findById(id);
+		Review r = reviewService.findById(id);
+		System.out.println();
+		return r;
 	}
 	
 	@PostMapping("/add")

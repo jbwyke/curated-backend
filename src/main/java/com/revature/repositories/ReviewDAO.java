@@ -9,7 +9,5 @@ import com.revature.model.Review;
 public interface ReviewDAO extends JpaRepository<Review, Integer>{
 	
 	public Optional<Review> findByReviewId(int id);
-
-	public Optional<Review> findByUserId(int id);
 	
 }
