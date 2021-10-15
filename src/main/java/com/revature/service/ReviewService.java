@@ -28,4 +28,18 @@ public class ReviewService {
 	public Review addReview(Review review) {
 		return reviewDAO.save(review);
 	}
+	
+	public Review update(Review review) {
+		return reviewDAO.save(review);
+	}
+	
+	public void delete(int id) {
+		Review r = findById(id);
+		r.setUser(null);
+		r.setMovie(null);
+		r = update(r);
+		System.out.println(r.toString());
+//		reviewDAO.deleteById(r.getReviewId());
+	}
+
 }
