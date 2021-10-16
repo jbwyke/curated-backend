@@ -31,8 +31,8 @@ public class Review {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, unique = true, updatable = false)
-	private int reviewId;
+	@Column(nullable = false, unique = true, updatable = false)
+	private int id;
 
 	@Range(min = 1, max = 5)
 	private int rating;

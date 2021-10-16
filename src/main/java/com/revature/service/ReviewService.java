@@ -39,7 +39,7 @@ public class ReviewService {
 		r.setMovie(null);
 		r = update(r);
 		System.out.println(r.toString());
-//		reviewDAO.deleteById(r.getReviewId());
+		reviewDAO.deleteById(r.getId());
 	}
 
 }
