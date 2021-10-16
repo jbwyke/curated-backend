@@ -1,10 +1,9 @@
 INSERT INTO users (first_name, last_name, username, password, email)
   VALUES 
-    ('Ty', 'Johnson', 'tjohnson', 'password', 'tj@email.com'),
-    ('Kirk', 'Hahn', 'khahn', 'password', 'kh@email.com'),
-    ('Rashid', 'Taleb', 'rtaleb', 'somepass', 'rt@email.com'),
-    ('Jacen', 'Wyke', 'jwyke', 'somepass', 'jw@email.com');
-
+    ('Ty', 'Johnson', 'tjohnson', '$2a$12$GOyJU2wKq48x912H24tcku1xXm1z60YKjTzQ8F6nhXGFizgzkV6Ne', 'tj@email.com'),
+    ('Kirk', 'Hahn', 'khahn', '$2a$12$GOyJU2wKq48x912H24tcku1xXm1z60YKjTzQ8F6nhXGFizgzkV6Ne', 'kh@email.com'),
+    ('Rashid', 'Taleb', 'rtaleb', '$2a$12$rmGGYH786n2P6Usx20ZWT.sLinC0xjeoRYIaMQM9OVu3kjERPfNzG', 'rt@email.com'),
+    ('Jacen', 'Wyke', 'jwyke', '$2a$12$rmGGYH786n2P6Usx20ZWT.sLinC0xjeoRYIaMQM9OVu3kjERPfNzG', 'jw@email.com');
 INSERT INTO movie (id, director, plot, poster, rated, released, title, year, genre, metacritic, runtime, actors)
   VALUES
     ('tt0083658',
