@@ -18,7 +18,7 @@ public interface MovieDAO extends JpaRepository<Movie, Integer>{
 	
 	public List<Movie> findByGenreContainingIgnoreCase(String genre);
 	
-	@Query(nativeQuery=true, value="SELECT *  FROM movie ORDER BY random() LIMIT 2")
+	@Query(nativeQuery=true, value="SELECT *  FROM movie ORDER BY random() LIMIT 10")
 	public Set<Movie> getRandom();
 
 	public Optional<Movie> findById(String id);
