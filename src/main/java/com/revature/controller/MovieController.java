@@ -43,6 +43,11 @@ public class MovieController {
 		return ResponseEntity.ok(movieService.findByTitleContaining(title));
 	}
     
+    @GetMapping("/random")
+	public ResponseEntity<Set<Movie>> getRandom() {
+		return ResponseEntity.ok(movieService.getRandom());
+	}
+    
     @GetMapping("/search/genre")
 	public ResponseEntity<Set<Movie>> findByGenreContaining(@RequestParam(value="q") String genre) {
 		return ResponseEntity.ok(movieService.findByGenreContaining(genre));
