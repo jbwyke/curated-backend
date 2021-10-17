@@ -47,4 +47,8 @@ public class MovieService {
 	public Movie getById(int id) {
 		return movieDAO.getById(id);
 	}
+	
+	public Set<Movie> getRandom() {
+		return movieDAO.getRandom();
+	}
 }

@@ -62,6 +62,14 @@ public class UserService implements UserDetailsService{
 		
 		return userDAO.save(u);
 	}
+	
+	public void update(User u) {
+		//encrypting the submitted password and sending the encrypted password to the db
+//		String encodedPassword = this.passwordEncoder.encode(u.getPassword());
+//		u.setPassword(encodedPassword);
+		
+		userDAO.setUserInfoById(u.getFirstName(), u.getLastName(), u.getUsername(), u.getId());
+	}
 
 	//do we need to throw an exception here?
 	public User getById(int id) {
