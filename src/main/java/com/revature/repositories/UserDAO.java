@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -31,5 +32,10 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 	// @Modifying  // I would use this if I intend for some method to manipulate and modify data in a DB
 	@Query(value= "FROM User WHERE email LIKE %:substr") // Note that I'm calling the Java properties and object name -> this is JPQL 
 	public List<User> findByEmailContains(String substr); // johnsmi -> reutrns johnsmith@gmail.com
+	
+	@Transactional
+	@Modifying
+	@Query(value= "UPDATE User u set u.firstName = ?1, u.lastName = ?2, u.username = ?3 WHERE u.id = ?4")
+	void setUserInfoById(String firstName, String lastName, String username, Integer userId);
 	
 }

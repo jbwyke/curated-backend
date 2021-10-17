@@ -62,8 +62,8 @@ public class UserController {
     
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<User> update(@Valid @RequestBody User user) {
-		return ResponseEntity.ok(userService.insert(user));
+	public void update(@Valid @RequestBody User user) {
+		userService.update(user);
 	}
     
     @DeleteMapping("/{id}")
