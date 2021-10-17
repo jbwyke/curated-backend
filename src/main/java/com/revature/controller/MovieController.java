@@ -49,7 +49,7 @@ public class MovieController {
 	}
 	
 	@PostMapping("/add")
-	public void insert(@Valid @RequestBody Movie m) {
-		movieService.insert(m);
+	public ResponseEntity<Movie> insert(@Valid @RequestBody Movie m) {
+		return ResponseEntity.ok(movieService.insert(m));
 	}
 }
