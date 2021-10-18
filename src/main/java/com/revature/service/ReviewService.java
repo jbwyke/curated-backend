@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.ReviewNotFoundException;
 import com.revature.model.Review;
+import com.revature.repositories.MovieDAO;
 import com.revature.repositories.ReviewDAO;
 
 @Service
@@ -40,6 +41,13 @@ public class ReviewService {
 		r = update(r);
 		System.out.println(r.toString());
 		reviewDAO.deleteById(r.getId());
+	}
+	
+	/*
+	 * the following methods are here for testing purposes
+	 */
+	public void setReviewDAO(ReviewDAO dao) {
+		this.reviewDAO = dao;
 	}
 
 }
