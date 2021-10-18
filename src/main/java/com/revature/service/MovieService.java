@@ -4,11 +4,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.revature.exceptions.MovieNotFoundException;
 import com.revature.model.Movie;
 import com.revature.repositories.MovieDAO;
+import com.revature.repositories.UserDAO;
 
 @Service
 public class MovieService {
@@ -51,4 +53,12 @@ public class MovieService {
 	public Set<Movie> getRandom() {
 		return movieDAO.getRandom();
 	}
+	
+	/*
+	 * the following methods are here for testing purposes
+	 */
+	public void setMovieDAO(MovieDAO mdao) {
+		this.movieDAO = mdao;
+	}
+	
 }

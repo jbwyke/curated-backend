@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.revature.exceptions.FollowNotFoundException;
 import com.revature.model.Follow;
 import com.revature.repositories.FollowDAO;
+import com.revature.repositories.ReviewDAO;
 
 @Service
 public class FollowService {
@@ -38,5 +39,13 @@ public class FollowService {
 	
 	public void delete(int id) {
 		followDao.deleteById(id);
+	}
+	
+	
+	/*
+	 * the following methods are here for testing purposes
+	 */
+	public void setFollowDAO(FollowDAO dao) {
+		this.followDao = dao;
 	}
 }
