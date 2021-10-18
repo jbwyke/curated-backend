@@ -1,7 +1,7 @@
 # Curated-backend
 
 ## Project Description
-A backend to control data flow for the curated frontend
+A backend to control data flow for the curated frontend ([found here](https://github.com/Foxpope/curated-frontend)) 
 
 ## Technologies Used
 
